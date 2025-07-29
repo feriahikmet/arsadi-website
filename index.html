@@ -224,6 +224,45 @@
     opacity: 1;
 }
 
+@media (max-width: 700px) {
+    .section-header { font-size: 2rem; }
+    .section-subheader { font-size: 1.1rem; }
+    .section-content {
+        padding: 15px;
+        max-width: 98vw;
+    }
+    .navbar {
+        flex-wrap: wrap;
+        padding: 8px 0;
+        font-size: 0.95rem;
+    }
+    .navbar a {
+        margin: 5px 8px;
+    }
+    #home, #bio {
+        padding-top: 180px;
+        background-attachment: scroll;
+    }
+    #new, #music-videos, #press-photos, #live, #merch, #contact {
+        padding-top: 60px;
+        background-attachment: scroll;
+    }
+    .photo-grid, .video-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0;
+    }
+    .card-image {
+        max-width: 98vw;
+    }
+    img, iframe {
+        max-width: 100%;
+        height: auto;
+    }
+    .photo-item {
+        aspect-ratio: 1 / 1;
+    }
+}
     </style>
 </head>
 <body>
