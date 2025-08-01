@@ -226,6 +226,10 @@
     opacity: 1;
 }
 
+#scroll-down-prompt.fade-in {
+  opacity: 1 !important;
+}
+
 @media (max-width: 700px) {
     .section-header { font-size: 2rem; }
     .section-subheader { font-size: 1.1rem; }
@@ -285,6 +289,26 @@
 
     <!-- Home Section -->
     <section id="home" class="section">
+      <!-- Scroll Down Prompt -->
+      <div id="scroll-down-prompt" style="
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 3s;
+  pointer-events: auto;
+">
+  Scroll down <br>
+  <span style="font-size:2rem; display:inline-block; margin-top:4px;">&#8595;</span>
+</div>
+
   <div class="section-content">
     <img src="images/logo.png" alt="Arsadi Logo">
     <!-- Social Icons on Home Page -->
@@ -669,7 +693,33 @@
         window.addEventListener('scroll', checkVisibility);
         window.addEventListener('load', checkVisibility);
     </script>
-   
+
+      <script>
+  // Show scroll down prompt after 10s if not scrolled
+  let scrollPromptTimeout = setTimeout(() => {
+    const prompt = document.getElementById('scroll-down-prompt');
+    prompt.classList.add('fade-in');
+  }, 4000);
+
+  // Hide prompt if user scrolls
+  window.addEventListener('scroll', () => {
+    const prompt = document.getElementById('scroll-down-prompt');
+    prompt.classList.remove('fade-in');
+    prompt.style.display = 'none';
+    clearTimeout(scrollPromptTimeout);
+  });
+
+  // Scroll down when prompt is clicked
+  document.getElementById('scroll-down-prompt').addEventListener('click', function() {
+    const homeSection = document.getElementById('home');
+    const header = homeSection.querySelector('.section-header');
+    const headerOffset = header.getBoundingClientRect().top + window.scrollY - 60; // 60px for navbar
+    window.scrollTo({ top: headerOffset, behavior: 'smooth' });
+    this.classList.remove('fade-in');
+    this.style.display = 'none';
+  });
+</script>
+
    <!-- Footer -->
 <footer style="background-color: rgba(0, 0, 0, 0.8); padding: 30px 20px; text-align: center; color: #fff; margin-top: 50px;">
     <p style="margin-bottom: 15px; font-size: 1.1rem;">Follow ARSADI</p>
