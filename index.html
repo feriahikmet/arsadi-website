@@ -143,6 +143,7 @@
         #home { background-image: url('images/music_web.jpg'); padding-top: 400px; }
         #new { background-image: url('images/dream.jpg'); padding-top: 100px;}  
         #music-videos { background-image: url('images/front_web.jpg'); padding-top: 100px;}
+        #lyrics { background-image: url('images/front_web.jpg'); padding-top: 100px; }
         #press-photos { background-image: url('images/press_web.jpg');padding-top: 100px; }
         #bio { background-image: url('images/ARSADI - Neon Moonlight - Press photo 4 - Gustav Aldin Photography - LR.jpg'); padding-top: 400px;}
         #live { background-image: url('images/live_web.jpg');padding-top: 100px; }
@@ -215,6 +216,96 @@ footer .social-icons a:hover {
     transform: scale(1.05);
 }
 
+    .lyrics-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      list-style: none;
+      max-width: 800px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
+
+    .lyrics-button {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lyrics-button:hover,
+    .lyrics-button:focus-visible {
+      background: rgba(0, 180, 179, 0.2);
+      border-color: #00b4b3;
+    }
+
+    .lyrics-modal {
+      width: min(1000px, 96vw);
+      height: min(900px, 92vh);
+      max-width: none;
+      max-height: none;
+      padding: 0;
+      border: 0;
+      border-radius: 2px;
+      background: #fff;
+      color: #171717;
+      overflow: auto;
+    }
+
+    .lyrics-modal::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    .lyrics-modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      border-bottom: 1px solid #e5e5e5;
+      background: #fff;
+    }
+
+    .lyrics-modal-title {
+      font-size: 1.1rem;
+      color: #171717;
+    }
+
+    .lyrics-modal-close {
+      border: 0;
+      background: transparent;
+      color: #171717;
+      cursor: pointer;
+      font: inherit;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .lyrics-pages {
+      background: #fff;
+    }
+
+    .lyrics-page {
+      display: block;
+      width: 100%;
+      max-width: 850px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .lyrics-page + .lyrics-page {
+      margin-top: 12px;
+    }
+
 .photo-caption {
     position: absolute;
     bottom: 0;
@@ -252,7 +343,7 @@ footer .social-icons a:hover {
     .navbar a {
         margin: 5px 8px;
     }
-   #home, #bio, #new, #music-videos, #press-photos, #live, #merch, #contact {
+  #home, #bio, #new, #music-videos, #lyrics, #press-photos, #live, #merch, #contact {
         padding-top: 60px;
         background-attachment: scroll !important;
         background-position: center center !important;
@@ -301,6 +392,7 @@ body {
         <a href="#bio">Bio</a>
         <a href="#press-photos">Press photos</a>
         <a href="#music-videos">Music & Videos</a>
+        <a href="#lyrics">Lyrics</a>
         <a href="#live">Live</a>
         <a href="#merch">Merch</a>
         <a href="#contact">Contact</a>
@@ -682,6 +774,72 @@ body {
         </div>
     </section>
 
+    <!-- Lyrics Section -->
+    <section id="lyrics" class="section">
+      <div class="section-content">
+        <h1 class="section-header">Lyrics</h1>
+        <ul class="lyrics-list">
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="a-10-hour-flight" data-page-count="1">A 10 Hour Flight</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="bella-blue" data-page-count="1">Bella Blue</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="closer" data-page-count="1">Closer</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="cold-thoughts" data-page-count="2">Cold Thoughts</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="deep-waters" data-page-count="1">Deep Waters</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="fade-in-fade-out" data-page-count="2">Fade In Fade Out</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="green-walls" data-page-count="1">Green Walls</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="if-you-were-mine" data-page-count="1">If You Were Mine</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="love-should-be-like" data-page-count="1">Love Should Be Like</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="neon-moonlight" data-page-count="2">Neon Moonlight</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="overcome-the-night" data-page-count="1">Overcome The Night</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="set-fire-to-me" data-page-count="1">Set Fire To Me</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="soleil-levant" data-page-count="1">Soleil Levant</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="surrender" data-page-count="1">Surrender</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="the-dream-1984" data-page-count="2">The Dream (1984)</button></li>
+          <li><button class="lyrics-button" type="button" data-lyrics-slug="towards-a-remedy" data-page-count="2">Towards a Remedy</button></li>
+        </ul>
+      </div>
+      <dialog id="lyrics-modal" class="lyrics-modal" aria-labelledby="lyrics-modal-title">
+        <div class="lyrics-modal-header">
+          <h2 id="lyrics-modal-title" class="lyrics-modal-title"></h2>
+          <button class="lyrics-modal-close" type="button" aria-label="Close lyrics">&times;</button>
+        </div>
+        <div id="lyrics-pages" class="lyrics-pages"></div>
+      </dialog>
+    </section>
+
+    <script>
+      const lyricsModal = document.getElementById('lyrics-modal');
+      const lyricsModalTitle = document.getElementById('lyrics-modal-title');
+      const lyricsPages = document.getElementById('lyrics-pages');
+      const closeLyricsModal = document.querySelector('.lyrics-modal-close');
+
+      document.querySelectorAll('.lyrics-button').forEach(button => {
+        button.addEventListener('click', () => {
+          lyricsModalTitle.textContent = `${button.textContent} - Lyrics`;
+          lyricsPages.replaceChildren();
+          for (let pageNumber = 1; pageNumber <= Number(button.dataset.pageCount); pageNumber++) {
+            const page = document.createElement('img');
+            page.className = 'lyrics-page';
+            page.src = `lyrics/pages/${button.dataset.lyricsSlug}/page-${pageNumber}.png`;
+            page.alt = `${button.textContent} lyrics, page ${pageNumber}`;
+            page.loading = 'lazy';
+            lyricsPages.append(page);
+          }
+          lyricsModal.showModal();
+          closeLyricsModal.focus();
+        });
+      });
+
+      closeLyricsModal.addEventListener('click', () => lyricsModal.close());
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && lyricsModal.open) {
+          event.preventDefault();
+          lyricsModal.close();
+        }
+      });
+      lyricsModal.addEventListener('close', () => {
+        lyricsPages.replaceChildren();
+      });
+    </script>
 
     <!-- Live Section -->
     <section id="live" class="section">
